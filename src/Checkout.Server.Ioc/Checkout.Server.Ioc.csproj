@@ -46,6 +46,10 @@
       <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="nunit.framework, Version=3.7.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.3.7.1\lib\net45\nunit.framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Net.Http, Version=4.1.1.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -96,6 +100,14 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Checkout.Server.Core\Checkout.Server.Core.csproj">
+      <Project>{BD78D959-4102-4237-97B3-27B8CD9A3F00}</Project>
+      <Name>Checkout.Server.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Checkout.Server.Dal\Checkout.Server.Dal.csproj">
+      <Project>{9A1B56CB-3CAD-4ED5-B0CE-964AE9C2BB08}</Project>
+      <Name>Checkout.Server.Dal</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Checkout.Server.Infra\Checkout.Server.Infra.csproj">
       <Project>{FC4A58DE-6740-4CEE-903F-69FAB3110CFC}</Project>
       <Name>Checkout.Server.Infra</Name>

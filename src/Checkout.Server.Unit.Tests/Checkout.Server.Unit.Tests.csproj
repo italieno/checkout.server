@@ -49,8 +49,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Services\ShoppingCartCommandServiceTests.cs" />
-    <Compile Include="Services\ShoppingCartQueryServiceTests.cs" />
+    <Compile Include="Services\Commands\ShoppingCartCommandServiceTests.cs" />
+    <Compile Include="Services\Controllers\ShoppingCartControllerServiceTest.cs" />
+    <Compile Include="Services\Queries\ShoppingCartQueryServiceTests.cs" />
     <Compile Include="Repositories\SimpleInMemoryShoppingItemsRepositoryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

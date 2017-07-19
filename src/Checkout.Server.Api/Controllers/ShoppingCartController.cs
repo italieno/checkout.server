@@ -1,30 +1,62 @@
 ﻿using System.Collections.Generic;
-using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
+using Checkout.Server.Api.Requests;
+using Checkout.Server.Core.Models;
+using Checkout.Server.Core.Models.Api;
+using Checkout.Server.Core.Models.Commands;
+using Checkout.Server.Core.Models.Shopping;
+using Checkout.Server.Infra.Services.Controllers;
 
 namespace Checkout.Server.Api.Controllers
 {
     [RoutePrefix("shoppingcart")]
     public class ShoppingCartController : ApiController
     {
-        // GET: api/ShoppingList
+        private readonly IShoppingCartControllerService _controllerService;
 
-        public IEnumerable<string> Get()
+        public ShoppingCartController(IShoppingCartControllerService controllerService)
         {
-            return new string[] { "value1", "value2" };
+            _controllerService = controllerService;
         }
 
         [HttpGet]
-        [ResponseType(typeof(IEnumerable<string>))]
-        [Route("sessions/{userid}", Name = "usersessions")]
-        public async Task<IHttpActionResult> GetAccessSessions(string userId)
+        [ResponseType(typeof(IEnumerable<IShoppingItemModel>))]
+        [Route("", Name = "list")]
+        public IHttpActionResult GetAll()
         {
-            var response = await Task.FromResult(new string[] {"value1", "value2"});
+            var response = _controllerService.GetAll();
 
-            return Ok(response);
+            if (response.IsSuccess)
+                return Ok(response.Content);
 
-            //return new BadRequestWithError(response.Error);
+            return new BadRequestWithError(response.ApiError);
+        }
+
+        [HttpGet]
+        [ResponseType(typeof(IShoppingItemModel))]
+        [Route("{itemId}", Name = "item")]
+        public IHttpActionResult GetItem(string itemId)
+        {
+            var response = _controllerService.GetItem(itemId);
+
+            if (response.IsSuccess)
+                return Ok(response.Content);
+
+            return new BadRequestWithError(response.ApiError);
+        }
+
+        [HttpPost]
+        [ResponseType(typeof(IResponseModel))]
+        [Route("addItem", Name = "add")]
+        public IHttpActionResult AddItem(DrinkModel model)
+        {
+            var response = _controllerService.AddItem(new AddItemCommandModel(model));
+
+            if (response.IsSuccess)
+                return Ok(response.Content);
+
+            return new BadRequestWithError(response.ApiError);
         }
     }
 }

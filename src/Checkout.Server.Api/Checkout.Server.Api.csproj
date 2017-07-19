@@ -68,6 +68,10 @@
       <Project>{BD78D959-4102-4237-97B3-27B8CD9A3F00}</Project>
       <Name>Checkout.Server.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Checkout.Server.Infra\Checkout.Server.Infra.csproj">
+      <Project>{FC4A58DE-6740-4CEE-903F-69FAB3110CFC}</Project>
+      <Name>Checkout.Server.Infra</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

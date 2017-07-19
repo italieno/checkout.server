@@ -7,7 +7,7 @@ using Checkout.Server.Infra.Services.Queries;
 using NSubstitute;
 using NUnit.Framework;
 
-namespace Checkout.Server.Unit.Tests.Services
+namespace Checkout.Server.Unit.Tests.Services.Queries
 {
     [TestFixture]
     public class ShoppingCartQueryServiceTests

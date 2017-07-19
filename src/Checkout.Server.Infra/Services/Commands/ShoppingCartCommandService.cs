@@ -29,7 +29,7 @@ namespace Checkout.Server.Infra.Services.Commands
                 var existingItem = _itemsRepository.FindById(item.Id);
 
                 if (existingItem == null)
-                    return new ErrorCommandResponseModel($"can't remove a not existing item [{item.Id}]");
+                    return new ErrorCommandResponseModel($"unable to find item [{item.Id}]");
 
                 if (existingItem.Quantity < item.Quantity)
                     return new ErrorCommandResponseModel($"can't process request for [{item.Id}] [quantity:{existingItem.Quantity}] [requested:{item.Quantity}]");
@@ -75,6 +75,43 @@ namespace Checkout.Server.Infra.Services.Commands
                     _itemsRepository.Save(new DrinkModel(item.Id.ToString(), newQuantity));
                 }
 
+                return new SuccessCommandResponseModel(true);
+            }
+            catch (Exception e)
+            {
+                return new ErrorCommandResponseModel(e);
+            }
+        }
+
+        public ICommandResponseModel UpdateItem(UpdateItemCommandModel commandModel)
+        {
+            if (string.IsNullOrEmpty(commandModel?.Item?.Id?.ToString()))
+                throw new ArgumentException("Invalid UpdateItemCommandModel exception");
+
+            var item = commandModel.Item;
+
+            if (item.Quantity < 0)
+                return new ErrorCommandResponseModel($"wrong item quantity [{item.Quantity}]");
+
+            try
+            {
+                var existingItem = _itemsRepository.FindById(item.Id);
+
+                if (item.Quantity == 0 && existingItem == null)
+                {
+                    //Do nothing
+                }
+
+                if (item.Quantity == 0 && existingItem != null)
+                {
+                    _itemsRepository.Delete(commandModel.Item.Id);
+                }
+                
+                if (item.Quantity > 0)
+                {
+                    _itemsRepository.Save(item);
+                }
+                
                 return new SuccessCommandResponseModel(true);
             }
             catch (Exception e)

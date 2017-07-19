@@ -2,7 +2,6 @@
 using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
-using Checkout.Server.Infra.Helpers;
 
 namespace Checkout.Server.Ioc.Installers
 {
@@ -10,7 +9,7 @@ namespace Checkout.Server.Ioc.Installers
     {
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
-            var assemblies = Classes.FromAssemblyInDirectory(new AssemblyFilter(AssemblyHelper.AssemblyDirectory));
+            var assemblies = Classes.FromAssemblyInDirectory(new AssemblyFilter(Checkout.Server.Infra.Helpers.AssemblyHelper.AssemblyDirectory));
 
             container.Register(
                 assemblies
