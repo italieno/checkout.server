@@ -34,7 +34,7 @@ namespace Checkout.Server.Unit.Tests.Services.Commands
         public void RemoveItem_WhenItemHasNullOrEmptyItemId_ShoulThrowAnIvalidArgumentException(string invalidId)
         {
             //Arrange
-            var command = new RemoveItemCommandModel(new DrinkModel(invalidId));
+            var command = new RemoveItemCommandModel(new ShoppingCartItemModel(invalidId));
 
             //Act
             //Assert
@@ -50,7 +50,7 @@ namespace Checkout.Server.Unit.Tests.Services.Commands
             _itemsRepository.FindById(Arg.Any<IComparable>()).Returns(queryResult);
 
             //Act
-            var response = _sut.RemoveItem(new RemoveItemCommandModel(new DrinkModel("WatheverItem", wrongQuantity)));
+            var response = _sut.RemoveItem(new RemoveItemCommandModel(new ShoppingCartItemModel("WatheverItem", wrongQuantity)));
 
             //Assert
             Assert.IsFalse(response.IsSuccess);
@@ -66,7 +66,7 @@ namespace Checkout.Server.Unit.Tests.Services.Commands
             _itemsRepository.FindById(Arg.Any<IComparable>()).Returns(queryResult);
 
             //Act
-            var response = _sut.RemoveItem(new RemoveItemCommandModel(new DrinkModel("NoExistingItem")));
+            var response = _sut.RemoveItem(new RemoveItemCommandModel(new ShoppingCartItemModel("NoExistingItem")));
 
             //Assert
             Assert.IsFalse(response.IsSuccess);
@@ -78,10 +78,10 @@ namespace Checkout.Server.Unit.Tests.Services.Commands
         public void RemoveItem_WhenItemExistsAndTryToDeleteMoreThanExistingQuantity_ShoulReturnNotExistingError()
         {
             //Arrange
-            _itemsRepository.FindById(Arg.Any<IComparable>()).Returns(new DrinkModel("Fanta", 3));
+            _itemsRepository.FindById(Arg.Any<IComparable>()).Returns(new ShoppingCartItemModel("Fanta", 3));
 
             //Act
-            var response = _sut.RemoveItem(new RemoveItemCommandModel(new DrinkModel("Fanta", 4)));
+            var response = _sut.RemoveItem(new RemoveItemCommandModel(new ShoppingCartItemModel("Fanta", 4)));
 
             //Assert
             Assert.IsFalse(response.IsSuccess);
@@ -93,10 +93,10 @@ namespace Checkout.Server.Unit.Tests.Services.Commands
         public void RemoveItem_WhenItemExistsAndProvidedQuantityIsEqualToTheCurrentOne_ShoulDeleteCompletelyTheItemFromTheCart()
         {
             //Arrange
-            _itemsRepository.FindById(Arg.Any<IComparable>()).Returns(new DrinkModel("Fanta", 3));
+            _itemsRepository.FindById(Arg.Any<IComparable>()).Returns(new ShoppingCartItemModel("Fanta", 3));
             
             //Act
-            var response = _sut.RemoveItem(new RemoveItemCommandModel(new DrinkModel("Fanta", 3)));
+            var response = _sut.RemoveItem(new RemoveItemCommandModel(new ShoppingCartItemModel("Fanta", 3)));
 
             //Assert
             _itemsRepository.Received().Delete(Arg.Any<IComparable>());
@@ -108,13 +108,13 @@ namespace Checkout.Server.Unit.Tests.Services.Commands
         public void RemoveItem_WhenItemExistsAndProvidedQuantityIsLessThanTheCurrentOne_ShoulDeleteTheCorrectItemNumberFromTheCart()
         {
             //Arrange
-            _itemsRepository.FindById(Arg.Any<IComparable>()).Returns(new DrinkModel("Fanta", 3));
+            _itemsRepository.FindById(Arg.Any<IComparable>()).Returns(new ShoppingCartItemModel("Fanta", 3));
 
             //Act
-            var response = _sut.RemoveItem(new RemoveItemCommandModel(new DrinkModel("Fanta", 1)));
+            var response = _sut.RemoveItem(new RemoveItemCommandModel(new ShoppingCartItemModel("Fanta", 1)));
 
             //Assert
-            _itemsRepository.Received().Save(Arg.Is<DrinkModel>(x => (string) x.Id == "Fanta" && x.Quantity == 2));
+            _itemsRepository.Received().Save(Arg.Is<ShoppingCartItemModel>(x => (string) x.Id == "Fanta" && x.Quantity == 2));
             Assert.IsTrue(response.IsSuccess);
             Assert.IsNull(response.Error);
         }
@@ -132,7 +132,7 @@ namespace Checkout.Server.Unit.Tests.Services.Commands
         public void AddItem_WhenItemHasNullOrEmptyItemId_ShoulThrowAnIvalidArgumentException(string invalidId)
         {
             //Arrange
-            var command = new AddItemCommandModel(new DrinkModel(invalidId));
+            var command = new AddItemCommandModel(new ShoppingCartItemModel(invalidId));
 
             //Act
             //Assert
@@ -148,7 +148,7 @@ namespace Checkout.Server.Unit.Tests.Services.Commands
             _itemsRepository.FindById(Arg.Any<IComparable>()).Returns(queryResult);
 
             //Act
-            var response = _sut.AddItem(new AddItemCommandModel(new DrinkModel("WatheverItem", wrongQuantity)));
+            var response = _sut.AddItem(new AddItemCommandModel(new ShoppingCartItemModel("WatheverItem", wrongQuantity)));
 
             //Assert
             Assert.IsFalse(response.IsSuccess);
@@ -164,10 +164,10 @@ namespace Checkout.Server.Unit.Tests.Services.Commands
             _itemsRepository.FindById(Arg.Any<IComparable>()).Returns(queryResult);
 
             //Act
-            var response = _sut.AddItem(new AddItemCommandModel(new DrinkModel("NoExistingItem")));
+            var response = _sut.AddItem(new AddItemCommandModel(new ShoppingCartItemModel("NoExistingItem")));
 
             //Assert
-            _itemsRepository.Received().Save(Arg.Is<DrinkModel>(x => (string)x.Id == "NoExistingItem" && x.Quantity == 1));
+            _itemsRepository.Received().Save(Arg.Is<ShoppingCartItemModel>(x => (string)x.Id == "NoExistingItem" && x.Quantity == 1));
             Assert.IsTrue(response.IsSuccess);
             Assert.IsNull(response.Error);
         }
@@ -176,14 +176,14 @@ namespace Checkout.Server.Unit.Tests.Services.Commands
         public void AddItem_WhenItemExists_ShoulUpdateQuantity()
         {
             //Arrange
-            IShoppingItemModel queryResult = new DrinkModel("Coca-Cola", 5);
+            IShoppingItemModel queryResult = new ShoppingCartItemModel("Coca-Cola", 5);
             _itemsRepository.FindById(Arg.Any<IComparable>()).Returns(queryResult);
 
             //Act
-            var response = _sut.AddItem(new AddItemCommandModel(new DrinkModel("Coca-Cola", 2)));
+            var response = _sut.AddItem(new AddItemCommandModel(new ShoppingCartItemModel("Coca-Cola", 2)));
 
             //Assert
-            _itemsRepository.Received().Save(Arg.Is<DrinkModel>(x => (string)x.Id == "Coca-Cola" && x.Quantity == 7));
+            _itemsRepository.Received().Save(Arg.Is<ShoppingCartItemModel>(x => (string)x.Id == "Coca-Cola" && x.Quantity == 7));
             Assert.IsTrue(response.IsSuccess);
             Assert.IsNull(response.Error);
         }
@@ -201,7 +201,7 @@ namespace Checkout.Server.Unit.Tests.Services.Commands
         public void UpdateItem_WhenItemHasNullOrEmptyItemId_ShoulThrowAnIvalidArgumentException(string invalidId)
         {
             //Arrange
-            var command = new UpdateItemCommandModel(new DrinkModel(invalidId));
+            var command = new UpdateItemCommandModel(new ShoppingCartItemModel(invalidId));
 
             //Act
             //Assert
@@ -216,7 +216,7 @@ namespace Checkout.Server.Unit.Tests.Services.Commands
             _itemsRepository.FindById(Arg.Any<IComparable>()).Returns(queryResult);
 
             //Act
-            var response = _sut.UpdateItem(new UpdateItemCommandModel(new DrinkModel("WatheverItem", -1)));
+            var response = _sut.UpdateItem(new UpdateItemCommandModel(new ShoppingCartItemModel("WatheverItem", -1)));
 
             //Assert
             Assert.IsFalse(response.IsSuccess);
@@ -232,7 +232,7 @@ namespace Checkout.Server.Unit.Tests.Services.Commands
             _itemsRepository.FindById(Arg.Any<IComparable>()).Returns(queryResult);
 
             //Act
-            var response = _sut.UpdateItem(new UpdateItemCommandModel(new DrinkModel("NotExistingItem", 0)));
+            var response = _sut.UpdateItem(new UpdateItemCommandModel(new ShoppingCartItemModel("NotExistingItem", 0)));
 
             //Assert
             _itemsRepository.DidNotReceive().Save(Arg.Any<IShoppingItemModel>());
@@ -245,11 +245,11 @@ namespace Checkout.Server.Unit.Tests.Services.Commands
         public void UpdateItem_WhenItemQuantityIsZeroAndAlreadyPresent_ShoulDeleteIt()
         {
             //Arrange
-            IShoppingItemModel queryResult = new DrinkModel("Pepsi", 3);
+            IShoppingItemModel queryResult = new ShoppingCartItemModel("Pepsi", 3);
             _itemsRepository.FindById(Arg.Any<IComparable>()).Returns(queryResult);
 
             //Act
-            var response = _sut.UpdateItem(new UpdateItemCommandModel(new DrinkModel("Pepsi", 0)));
+            var response = _sut.UpdateItem(new UpdateItemCommandModel(new ShoppingCartItemModel("Pepsi", 0)));
 
             //Assert
             _itemsRepository.Received().Delete(Arg.Is<IComparable>(x => (string)x == "Pepsi"));
@@ -261,14 +261,14 @@ namespace Checkout.Server.Unit.Tests.Services.Commands
         public void UpdateItem_WhenItemQuantityIsPositiveAndAlreadyPresent_ShoulDeleteIt()
         {
             //Arrange
-            IShoppingItemModel queryResult = new DrinkModel("Pepsi", 3);
+            IShoppingItemModel queryResult = new ShoppingCartItemModel("Pepsi", 3);
             _itemsRepository.FindById(Arg.Any<IComparable>()).Returns(queryResult);
 
             //Act
-            var response = _sut.UpdateItem(new UpdateItemCommandModel(new DrinkModel("Pepsi", 2)));
+            var response = _sut.UpdateItem(new UpdateItemCommandModel(new ShoppingCartItemModel("Pepsi", 2)));
 
             //Assert
-            _itemsRepository.Received().Save(Arg.Is<DrinkModel>(x => (string)x.Id == "Pepsi" && x.Quantity == 2));
+            _itemsRepository.Received().Save(Arg.Is<ShoppingCartItemModel>(x => (string)x.Id == "Pepsi" && x.Quantity == 2));
             Assert.IsTrue(response.IsSuccess);
             Assert.IsNull(response.Error);
         }

@@ -1,7 +1,9 @@
 using System;
 using System.Net;
 using Checkout.Server.Core.Models.Api;
+using Checkout.Server.Core.Models.Api.Inputs;
 using Checkout.Server.Core.Models.Commands;
+using Checkout.Server.Core.Models.Shopping;
 using Checkout.Server.Infra.Services.Commands;
 using Checkout.Server.Infra.Services.Queries;
 
@@ -12,7 +14,8 @@ namespace Checkout.Server.Infra.Services.Controllers
         private readonly IShoppingCartCommandService _commandService;
         private readonly IShoppingCartQueryService _queryService;
 
-        public ShoppingCartControllerService(IShoppingCartQueryService queryService, IShoppingCartCommandService commandService)
+        public ShoppingCartControllerService(IShoppingCartQueryService queryService, 
+            IShoppingCartCommandService commandService)
         {
             _queryService = queryService;
             _commandService = commandService;
@@ -45,10 +48,12 @@ namespace Checkout.Server.Infra.Services.Controllers
             }
         }
 
-        public IApiResponseModel RemoveItem(RemoveItemCommandModel command)
+        public IApiResponseModel RemoveItem(ShoppingCartItemInputModel input)
         {
             try
             {
+                //todo: better to use command factory here
+                var command = new RemoveItemCommandModel(new ShoppingCartItemModel(input.What, input.HowMany));
                 var result = _commandService.RemoveItem(command);
 
                 if (result.IsSuccess)
@@ -65,10 +70,12 @@ namespace Checkout.Server.Infra.Services.Controllers
             }
         }
 
-        public IApiResponseModel AddItem(AddItemCommandModel command)
+        public IApiResponseModel AddItem(ShoppingCartItemInputModel input)
         {
             try
             {
+                //todo: better to use command factory here
+                var command = new AddItemCommandModel(new ShoppingCartItemModel(input.What, input.HowMany));
                 var result = _commandService.AddItem(command);
 
                 if (result.IsSuccess)
@@ -85,10 +92,12 @@ namespace Checkout.Server.Infra.Services.Controllers
             }
         }
 
-        public IApiResponseModel UpdateItem(UpdateItemCommandModel command)
+        public IApiResponseModel UpdateItem(ShoppingCartItemInputModel input)
         {
             try
             {
+                //todo: better to use command factory here
+                var command = new UpdateItemCommandModel(new ShoppingCartItemModel(input.What, input.HowMany));
                 var result = _commandService.UpdateItem(command);
 
                 if (result.IsSuccess)

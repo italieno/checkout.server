@@ -3,8 +3,7 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using Checkout.Server.Api.Requests;
 using Checkout.Server.Core.Models;
-using Checkout.Server.Core.Models.Api;
-using Checkout.Server.Core.Models.Commands;
+using Checkout.Server.Core.Models.Api.Inputs;
 using Checkout.Server.Core.Models.Shopping;
 using Checkout.Server.Infra.Services.Controllers;
 
@@ -48,10 +47,36 @@ namespace Checkout.Server.Api.Controllers
 
         [HttpPost]
         [ResponseType(typeof(IResponseModel))]
-        [Route("addItem", Name = "add")]
-        public IHttpActionResult AddItem(DrinkModel model)
+        [Route("add", Name = "add")]
+        public IHttpActionResult AddItem(ShoppingCartItemInputModel input)
         {
-            var response = _controllerService.AddItem(new AddItemCommandModel(model));
+            var response = _controllerService.AddItem(input);
+
+            if (response.IsSuccess)
+                return Ok(response.Content);
+
+            return new BadRequestWithError(response.ApiError);
+        }
+
+        [HttpPut]
+        [ResponseType(typeof(IResponseModel))]
+        [Route("update", Name = "update")]
+        public IHttpActionResult Update(ShoppingCartItemInputModel input)
+        {
+            var response = _controllerService.UpdateItem(input);
+
+            if (response.IsSuccess)
+                return Ok(response.Content);
+
+            return new BadRequestWithError(response.ApiError);
+        }
+
+        [HttpDelete]
+        [ResponseType(typeof(IResponseModel))]
+        [Route("remove", Name = "remove")]
+        public IHttpActionResult Delete(ShoppingCartItemInputModel input)
+        {
+            var response = _controllerService.RemoveItem(input);
 
             if (response.IsSuccess)
                 return Ok(response.Content);

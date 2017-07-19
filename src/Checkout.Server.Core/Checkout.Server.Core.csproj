@@ -47,6 +47,8 @@
   <ItemGroup>
     <Compile Include="Enums\ShoppingCartCommandType.cs" />
     <Compile Include="Models\Api\BasicApiResponseModel.cs" />
+    <Compile Include="Models\Api\Inputs\ShoppingCartItemInputModel.cs" />
+    <Compile Include="Models\Api\Inputs\IShoppingCartItemInputModel.cs" />
     <Compile Include="Models\Commands\UpdateItemCommandModel.cs" />
     <Compile Include="Models\Commands\AddItemCommandModel.cs" />
     <Compile Include="Models\Commands\CommandErrorModel.cs" />
@@ -59,9 +61,8 @@
     <Compile Include="Models\Api\ErrorApiResponseModel.cs" />
     <Compile Include="Models\IResponseModel.cs" />
     <Compile Include="Models\Shopping\IStoreableModel.cs" />
-    <Compile Include="Models\Shopping\DrinkModel.cs" />
+    <Compile Include="Models\Shopping\ShoppingCartItemModel.cs" />
     <Compile Include="Models\Shopping\IShoppingItemModel.cs" />
-    <Compile Include="Enums\ShoppingItemType.cs" />
     <Compile Include="Models\Api\SuccessReponseModel.cs" />
     <Compile Include="Models\Api\ValidationErrorModel.cs" />
     <Compile Include="Models\Api\IApiResponseModel.cs" />

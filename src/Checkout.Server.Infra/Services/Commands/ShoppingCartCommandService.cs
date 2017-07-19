@@ -40,7 +40,7 @@ namespace Checkout.Server.Infra.Services.Commands
                 if (existingItem.Quantity > item.Quantity)
                 {
                     var newQuantity = existingItem.Quantity - item.Quantity;
-                    _itemsRepository.Save(new DrinkModel(item.Id.ToString(), newQuantity));
+                    _itemsRepository.Save(new ShoppingCartItemModel(item.Id.ToString(), newQuantity));
                 }
 
                 return new SuccessCommandResponseModel(true);
@@ -72,7 +72,7 @@ namespace Checkout.Server.Infra.Services.Commands
                 else
                 {
                     var newQuantity = existingItem.Quantity + item.Quantity;
-                    _itemsRepository.Save(new DrinkModel(item.Id.ToString(), newQuantity));
+                    _itemsRepository.Save(new ShoppingCartItemModel(item.Id.ToString(), newQuantity));
                 }
 
                 return new SuccessCommandResponseModel(true);

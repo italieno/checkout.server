@@ -17,7 +17,7 @@ namespace Checkout.Server.Unit.Tests.Services.Queries
         private readonly IEnumerable<IShoppingItemModel> _emptyList = Enumerable.Empty<IShoppingItemModel>();
         private readonly IEnumerable<IShoppingItemModel> _nullList = null;
         private IEnumerable<IShoppingItemModel> _sampleList;
-        private readonly IShoppingItemModel _observedDrink = new DrinkModel("Fanta", 3);
+        private readonly IShoppingItemModel _observedDrink = new ShoppingCartItemModel("Fanta", 3);
 
         [SetUp]
         public void Setup()
@@ -31,10 +31,10 @@ namespace Checkout.Server.Unit.Tests.Services.Queries
         {
             _sampleList = new List<IShoppingItemModel>()
             {
-                new DrinkModel(id: "Coca-Cola", quantity: 2),
-                new DrinkModel(id: "Fanta", quantity: 3),
-                new DrinkModel(id: "Sprite"),
-                new DrinkModel(id: "7up", quantity: 5),
+                new ShoppingCartItemModel(id: "Coca-Cola", quantity: 2),
+                new ShoppingCartItemModel(id: "Fanta", quantity: 3),
+                new ShoppingCartItemModel(id: "Sprite"),
+                new ShoppingCartItemModel(id: "7up", quantity: 5),
             };
         }
 

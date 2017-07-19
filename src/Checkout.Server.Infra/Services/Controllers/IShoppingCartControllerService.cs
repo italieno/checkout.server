@@ -1,5 +1,5 @@
 using Checkout.Server.Core.Models.Api;
-using Checkout.Server.Core.Models.Commands;
+using Checkout.Server.Core.Models.Api.Inputs;
 
 namespace Checkout.Server.Infra.Services.Controllers
 {
@@ -7,8 +7,8 @@ namespace Checkout.Server.Infra.Services.Controllers
     {
         IApiResponseModel GetAll();
         IApiResponseModel GetItem(string id);
-        IApiResponseModel RemoveItem(RemoveItemCommandModel command);
-        IApiResponseModel AddItem(AddItemCommandModel command);
-        IApiResponseModel UpdateItem(UpdateItemCommandModel command);
+        IApiResponseModel RemoveItem(ShoppingCartItemInputModel input);
+        IApiResponseModel AddItem(ShoppingCartItemInputModel input);
+        IApiResponseModel UpdateItem(ShoppingCartItemInputModel input);
     }
 }

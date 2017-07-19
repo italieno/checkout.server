@@ -33,10 +33,10 @@ namespace Checkout.Server.Unit.Tests.Repositories
         {
             _sampleList = new List<IShoppingItemModel>()
             {
-                new DrinkModel(id: "Coca-Cola", quantity: 2),
-                new DrinkModel(id: "Fanta", quantity: 3),
-                new DrinkModel(id: "Sprite"),
-                new DrinkModel(id: "7up", quantity: 5),
+                new ShoppingCartItemModel(id: "Coca-Cola", quantity: 2),
+                new ShoppingCartItemModel(id: "Fanta", quantity: 3),
+                new ShoppingCartItemModel(id: "Sprite"),
+                new ShoppingCartItemModel(id: "7up", quantity: 5),
             };
         }
 
@@ -147,7 +147,7 @@ namespace Checkout.Server.Unit.Tests.Repositories
             _sut = new SimpleInMemoryShoppingItemsRepository(_storeMock);
 
             //Act
-            _sut.Save(new DrinkModel(id: "AnotherRandomDrink", quantity: 2));
+            _sut.Save(new ShoppingCartItemModel(id: "AnotherRandomDrink", quantity: 2));
             var result = _sut.All();
 
             //Assert
@@ -162,7 +162,7 @@ namespace Checkout.Server.Unit.Tests.Repositories
             _sut = new SimpleInMemoryShoppingItemsRepository(_storeMock);
 
             //Act
-            var drink = new DrinkModel(id: "RandomDrink", quantity: 2);
+            var drink = new ShoppingCartItemModel(id: "RandomDrink", quantity: 2);
             _sut.Save(drink);
             var result = _sut.All();
 
@@ -170,7 +170,7 @@ namespace Checkout.Server.Unit.Tests.Repositories
             Assert.IsTrue(result.Any());
 
             //Act [Again]
-            var drinkWithTheSameName = new DrinkModel(id: "RandomDrink", quantity: 3);
+            var drinkWithTheSameName = new ShoppingCartItemModel(id: "RandomDrink", quantity: 3);
             _sut.Save(drinkWithTheSameName);
             result = _sut.All();
 
@@ -189,7 +189,7 @@ namespace Checkout.Server.Unit.Tests.Repositories
             //Act
             var observedItem = _sut.FindById(ObservedDrink);
             
-            _sut.Save(new DrinkModel(observedItem.Id.ToString(), 8));
+            _sut.Save(new ShoppingCartItemModel(observedItem.Id.ToString(), 8));
             var result = _sut.FindById(ObservedDrink);
 
             //Assert
@@ -249,7 +249,7 @@ namespace Checkout.Server.Unit.Tests.Repositories
                 try
                 {
                     var thread1Drink = _sut.FindById(ObservedDrink);
-                    _sut.Save(new DrinkModel(id: thread1Drink.Id.ToString(), quantity: 10));
+                    _sut.Save(new ShoppingCartItemModel(id: thread1Drink.Id.ToString(), quantity: 10));
                     Console.WriteLine($"t1. Drink Inserted [{10}]");
                 }
                 catch (Exception e)
@@ -267,7 +267,7 @@ namespace Checkout.Server.Unit.Tests.Repositories
                     //simulate some heavy work here to make sure the write has been performed after t1 avoiding random result
                     Thread.Sleep(2000);
 
-                    _sut.Save(new DrinkModel(id: thread2Drink.Id.ToString(), quantity: 12));
+                    _sut.Save(new ShoppingCartItemModel(id: thread2Drink.Id.ToString(), quantity: 12));
                     Console.WriteLine($"t1. Drink Inserted [{12}]");
 
                 }
