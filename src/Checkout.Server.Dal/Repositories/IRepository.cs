@@ -4,7 +4,7 @@ using Checkout.Server.Core.Models.Shopping;
 
 namespace Checkout.Server.Dal.Repositories
 {
-    public interface IRepository<T> where T : IStoreable
+    public interface IRepository<T> where T : IStoreableModel
     {
         IEnumerable<T> All();
         void Delete(IComparable id); 

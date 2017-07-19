@@ -5,8 +5,8 @@ using System.Web.Http.Description;
 
 namespace Checkout.Server.Api.Controllers
 {
-    [RoutePrefix("shoppinglist")]
-    public class ShoppingListController : ApiController
+    [RoutePrefix("shoppingcart")]
+    public class ShoppingCartController : ApiController
     {
         // GET: api/ShoppingList
 

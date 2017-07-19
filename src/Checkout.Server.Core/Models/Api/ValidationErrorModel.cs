@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Checkout.Server.Core.Models
+namespace Checkout.Server.Core.Models.Api
 {
     public class ValidationErrorModel
     {

@@ -42,6 +42,21 @@
   <ItemGroup>
     <Compile Include="Helpers\AssemblyHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Commands\IShoppingCartCommandService.cs" />
+    <Compile Include="Services\Commands\ShoppingCartCommandService.cs" />
+    <Compile Include="Services\Controllers\ShoppingCartControllerService.cs" />
+    <Compile Include="Services\Queries\IShoppingCartQueryService.cs" />
+    <Compile Include="Services\Queries\ShoppingCartQueryService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Checkout.Server.Core\Checkout.Server.Core.csproj">
+      <Project>{BD78D959-4102-4237-97B3-27B8CD9A3F00}</Project>
+      <Name>Checkout.Server.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Checkout.Server.Dal\Checkout.Server.Dal.csproj">
+      <Project>{9A1B56CB-3CAD-4ED5-B0CE-964AE9C2BB08}</Project>
+      <Name>Checkout.Server.Dal</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

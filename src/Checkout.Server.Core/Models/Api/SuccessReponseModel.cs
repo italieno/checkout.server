@@ -1,6 +1,6 @@
-﻿namespace Checkout.Server.Core.Models
+﻿namespace Checkout.Server.Core.Models.Api
 {
-    public class SuccessReponseModel : BasicResponseModel
+    public class SuccessReponseModel : BasicApiResponseModel
     {
         public SuccessReponseModel() : this(null)
         {

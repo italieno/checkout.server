@@ -4,21 +4,22 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using Checkout.Server.Api.Responses;
 using Checkout.Server.Core.Models;
+using Checkout.Server.Core.Models.Api;
 
 namespace Checkout.Server.Api.Requests
 {
     public class BadRequestWithError : IHttpActionResult
     {
-        private readonly ErrorModel _error;
+        private readonly ApiErrorModel _apiError;
 
-        public BadRequestWithError(ErrorModel error)
+        public BadRequestWithError(ApiErrorModel apiError)
         {
-            _error = error;
+            _apiError = apiError;
         }
 
         public Task<HttpResponseMessage> ExecuteAsync(CancellationToken cancellationToken)
         {
-            var response = BadResponseWithError.GetResponse(_error);
+            var response = BadResponseWithError.GetResponse(_apiError);
             return Task.FromResult(response);
         }
     }

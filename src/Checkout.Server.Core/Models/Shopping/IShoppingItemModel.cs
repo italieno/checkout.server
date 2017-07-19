@@ -1,9 +1,8 @@
-﻿using System.ComponentModel;
-using Checkout.Server.Core.Enums;
+﻿using Checkout.Server.Core.Enums;
 
 namespace Checkout.Server.Core.Models.Shopping
 {
-    public interface IShoppingItemModel : IStoreable
+    public interface IShoppingItemModel : IStoreableModel
     {
         ShoppingItemType ItemType { get; }
         int Quantity{ get; }

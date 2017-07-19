@@ -1,9 +1,8 @@
-﻿namespace Checkout.Server.Core.Models
+namespace Checkout.Server.Core.Models
 {
     public interface IResponseModel
     {
-        bool IsSuccess { get; set; }
-        object Content { get; set; }
-        ErrorModel Error { get; set; }
+        bool IsSuccess { get; }
+        object Content { get; }
     }
 }

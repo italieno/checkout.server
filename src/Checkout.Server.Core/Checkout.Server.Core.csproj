@@ -41,16 +41,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\BasicResponseModel.cs" />
-    <Compile Include="Models\ErrorResponseModel.cs" />
-    <Compile Include="Models\Shopping\IStoreable.cs" />
+    <Compile Include="Enums\ShoppingCartCommandType.cs" />
+    <Compile Include="Models\Api\BasicApiResponseModel.cs" />
+    <Compile Include="Models\Commands\UpdateItemCommandModel.cs" />
+    <Compile Include="Models\Commands\AddItemCommandModel.cs" />
+    <Compile Include="Models\Commands\CommandErrorModel.cs" />
+    <Compile Include="Models\Commands\ErrorCommandResponseModel.cs" />
+    <Compile Include="Models\Commands\ICommandResponseModel.cs" />
+    <Compile Include="Models\Commands\SuccessCommandResponseModel.cs" />
+    <Compile Include="Models\IErrorModel.cs" />
+    <Compile Include="Models\Commands\IShoppingCartCommandModel.cs" />
+    <Compile Include="Models\Commands\RemoveItemCommandModel.cs" />
+    <Compile Include="Models\Api\ErrorApiResponseModel.cs" />
+    <Compile Include="Models\IResponseModel.cs" />
+    <Compile Include="Models\Shopping\IStoreableModel.cs" />
     <Compile Include="Models\Shopping\DrinkModel.cs" />
     <Compile Include="Models\Shopping\IShoppingItemModel.cs" />
     <Compile Include="Enums\ShoppingItemType.cs" />
-    <Compile Include="Models\SuccessReponseModel.cs" />
-    <Compile Include="Models\ValidationErrorModel.cs" />
-    <Compile Include="Models\IResponseModel.cs" />
-    <Compile Include="Models\ErrorModel.cs" />
+    <Compile Include="Models\Api\SuccessReponseModel.cs" />
+    <Compile Include="Models\Api\ValidationErrorModel.cs" />
+    <Compile Include="Models\Api\IApiResponseModel.cs" />
+    <Compile Include="Models\Api\ApiErrorModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

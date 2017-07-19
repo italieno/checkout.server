@@ -2,7 +2,7 @@
 
 namespace Checkout.Server.Core.Models.Shopping
 {
-    public interface IStoreable
+    public interface IStoreableModel
     {
         IComparable Id { get; }
     }
