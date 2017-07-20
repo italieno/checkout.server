@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FluentValidation">
+      <HintPath>..\packages\FluentValidation.7.1.0\lib\net45\FluentValidation.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
@@ -54,11 +57,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\ShoppingCartController.cs" />
+    <Compile Include="Filters\ValidateModelStateFilter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Requests\BadRequestWithError.cs" />
     <Compile Include="Requests\BadRequestWithContent.cs" />
     <Compile Include="Responses\BadResponseWithContent.cs" />
     <Compile Include="Responses\BadResponseWithError.cs" />
+    <Compile Include="Validators\ValidateUsernameModellValidator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
