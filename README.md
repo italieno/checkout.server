@@ -13,6 +13,7 @@ REST Api designed to handle a shopping list hosted in [azure](https://checkout-s
 - Compatible with [checkout-net-library 2.0](https://github.com/italieno/checkout-net-library)
 - Azure ARM template deployment
 - Comprehensive Unit Tests
+- Postman Collection and Environments
 
 ### Ideas for Future Improvements
 -   Event Broadcasting
