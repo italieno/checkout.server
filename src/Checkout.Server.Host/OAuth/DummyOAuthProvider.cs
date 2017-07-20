@@ -6,7 +6,7 @@ using Microsoft.Owin.Security.OAuth;
 
 namespace Checkout.Server.Host.OAuth
 {
-    public class CustomOAuthProvider : OAuthAuthorizationServerProvider
+    public class DummyOAuthProvider : OAuthAuthorizationServerProvider
     {
         public override Task ValidateClientAuthentication(OAuthValidateClientAuthenticationContext context)
         {

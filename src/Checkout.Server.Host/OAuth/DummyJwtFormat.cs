@@ -6,13 +6,13 @@ using Thinktecture.IdentityModel.Tokens;
 
 namespace Checkout.Server.Host.OAuth
 {
-    public class CustomJwtFormat : ISecureDataFormat<AuthenticationTicket>
+    public class DummyJwtFormat : ISecureDataFormat<AuthenticationTicket>
     {
         private const string AudiencePropertyKey = "audience";
 
         private readonly string _issuer = string.Empty;
 
-        public CustomJwtFormat(string issuer)
+        public DummyJwtFormat(string issuer)
         {
             _issuer = issuer;
         }

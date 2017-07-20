@@ -207,9 +207,9 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="OAuth\AudienceModel.cs" />
     <Compile Include="OAuth\Audience.cs" />
-    <Compile Include="OAuth\CustomJwtFormat.cs" />
+    <Compile Include="OAuth\DummyJwtFormat.cs" />
     <Compile Include="OAuth\AudiencesStore.cs" />
-    <Compile Include="OAuth\CustomOAuthProvider.cs" />
+    <Compile Include="OAuth\DummyOAuthProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>

@@ -48,22 +48,21 @@ namespace Checkout.Server.Host
 
         public void ConfigureOAuth(IAppBuilder app)
         {
-            // OAuth 2.0 Bearer Access Token Generation
+            //todo: use Formo here to grab these setting from  web config
+            var issuer = "dummy-oauth-server";
+            var audience = "099153c2625149bc8ecb3e85e03f0022";
+            var secret = TextEncodings.Base64Url.Decode("IxrAjDoa2FqElO7IhrSrUJELhUckePEPVpaePlS_Xaw");
+            
             app.UseOAuthAuthorizationServer(new OAuthAuthorizationServerOptions()
             {
                 //For Dev enviroment only (on production should be AllowInsecureHttp = false)
                 AllowInsecureHttp = true,
                 TokenEndpointPath = new PathString("/oauth/token"),
                 AccessTokenExpireTimeSpan = TimeSpan.FromMinutes(30),
-                Provider = new CustomOAuthProvider(),
-                AccessTokenFormat = new CustomJwtFormat("http://localhost:26603")
+                Provider = new DummyOAuthProvider(),
+                AccessTokenFormat = new DummyJwtFormat(issuer)
             });
-
-            // Api controllers with an [Authorize] attribute will be validated with JWT
-            var issuer = "http://localhost:26603";
-            var audience = "099153c2625149bc8ecb3e85e03f0022";
-            var secret = TextEncodings.Base64Url.Decode("IxrAjDoa2FqElO7IhrSrUJELhUckePEPVpaePlS_Xaw");
-
+            
             app.UseJwtBearerAuthentication(
                 new JwtBearerAuthenticationOptions
                 {
