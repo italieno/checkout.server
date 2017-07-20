@@ -59,7 +59,7 @@ namespace Checkout.Server.Host
                 //For Dev enviroment only (on production should be AllowInsecureHttp = false)
                 AllowInsecureHttp = true,
                 TokenEndpointPath = new PathString("/oauth/token"),
-                AccessTokenExpireTimeSpan = TimeSpan.FromMinutes(30),
+                AccessTokenExpireTimeSpan = TimeSpan.FromDays(30), //obsviously in a prd env i would use short-life tokens and i would implement refresh token feature
                 Provider = new DummyOAuthProvider(),
                 AccessTokenFormat = new DummyJwtFormat(issuer)
             });
