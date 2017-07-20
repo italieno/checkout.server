@@ -1,0 +1,83 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Checkout.Server.Host", "Checkout.Server.Host\Checkout.Server.Host.csproj", "{275856AB-9205-420C-B002-32F83CF657B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Checkout.Server.Ioc", "Checkout.Server.Ioc\Checkout.Server.Ioc.csproj", "{0E12F4CF-1EBB-490C-A87C-470FB14C9F4F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Checkout.Server.Infra", "Checkout.Server.Infra\Checkout.Server.Infra.csproj", "{FC4A58DE-6740-4CEE-903F-69FAB3110CFC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Checkout.Server.Api", "Checkout.Server.Api\Checkout.Server.Api.csproj", "{026A4042-BE72-40F7-91EA-C0080149C4DD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Checkout.Server.Core", "Checkout.Server.Core\Checkout.Server.Core.csproj", "{BD78D959-4102-4237-97B3-27B8CD9A3F00}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libs", "Libs", "{1496B1DD-FE4C-4324-94FA-E47E272E4CB3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Checkout.Server.Unit.Tests", "Checkout.Server.Unit.Tests\Checkout.Server.Unit.Tests.csproj", "{2ACFEBAF-2190-400B-AB10-DE117A02538D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{514D989B-13A6-4A0F-AB87-DADF19741A8C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Checkout.Server.Dal", "Checkout.Server.Dal\Checkout.Server.Dal.csproj", "{9A1B56CB-3CAD-4ED5-B0CE-964AE9C2BB08}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{38336FC2-495E-40F1-9B0A-348786005431}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\Users\stefano.gajon\Desktop\Postman\Checkout - Azure.postman_environment.json = ..\..\..\Users\stefano.gajon\Desktop\Postman\Checkout - Azure.postman_environment.json
+		..\..\..\Users\stefano.gajon\Desktop\Postman\Checkout - Local.postman_environment.json = ..\..\..\Users\stefano.gajon\Desktop\Postman\Checkout - Local.postman_environment.json
+		..\..\..\Users\stefano.gajon\Desktop\Postman\Checkout Server - Shopping Cart Api.postman_collection.json = ..\..\..\Users\stefano.gajon\Desktop\Postman\Checkout Server - Shopping Cart Api.postman_collection.json
+	EndProjectSection
+EndProject
+Project("{151D2E53-A2C4-4D7D-83FE-D05416EBD58E}") = "Checkout.Server.Deploy", "Checkout.Server.Deploy\Checkout.Server.Deploy.deployproj", "{6F488D56-F926-4BE8-A52F-46BF3F11898F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{275856AB-9205-420C-B002-32F83CF657B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{275856AB-9205-420C-B002-32F83CF657B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{275856AB-9205-420C-B002-32F83CF657B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{275856AB-9205-420C-B002-32F83CF657B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E12F4CF-1EBB-490C-A87C-470FB14C9F4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E12F4CF-1EBB-490C-A87C-470FB14C9F4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E12F4CF-1EBB-490C-A87C-470FB14C9F4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E12F4CF-1EBB-490C-A87C-470FB14C9F4F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC4A58DE-6740-4CEE-903F-69FAB3110CFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC4A58DE-6740-4CEE-903F-69FAB3110CFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC4A58DE-6740-4CEE-903F-69FAB3110CFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC4A58DE-6740-4CEE-903F-69FAB3110CFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{026A4042-BE72-40F7-91EA-C0080149C4DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{026A4042-BE72-40F7-91EA-C0080149C4DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{026A4042-BE72-40F7-91EA-C0080149C4DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{026A4042-BE72-40F7-91EA-C0080149C4DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD78D959-4102-4237-97B3-27B8CD9A3F00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD78D959-4102-4237-97B3-27B8CD9A3F00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD78D959-4102-4237-97B3-27B8CD9A3F00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD78D959-4102-4237-97B3-27B8CD9A3F00}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2ACFEBAF-2190-400B-AB10-DE117A02538D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2ACFEBAF-2190-400B-AB10-DE117A02538D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2ACFEBAF-2190-400B-AB10-DE117A02538D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2ACFEBAF-2190-400B-AB10-DE117A02538D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A1B56CB-3CAD-4ED5-B0CE-964AE9C2BB08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A1B56CB-3CAD-4ED5-B0CE-964AE9C2BB08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A1B56CB-3CAD-4ED5-B0CE-964AE9C2BB08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A1B56CB-3CAD-4ED5-B0CE-964AE9C2BB08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F488D56-F926-4BE8-A52F-46BF3F11898F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F488D56-F926-4BE8-A52F-46BF3F11898F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F488D56-F926-4BE8-A52F-46BF3F11898F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F488D56-F926-4BE8-A52F-46BF3F11898F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0E12F4CF-1EBB-490C-A87C-470FB14C9F4F} = {1496B1DD-FE4C-4324-94FA-E47E272E4CB3}
+		{FC4A58DE-6740-4CEE-903F-69FAB3110CFC} = {1496B1DD-FE4C-4324-94FA-E47E272E4CB3}
+		{026A4042-BE72-40F7-91EA-C0080149C4DD} = {1496B1DD-FE4C-4324-94FA-E47E272E4CB3}
+		{BD78D959-4102-4237-97B3-27B8CD9A3F00} = {1496B1DD-FE4C-4324-94FA-E47E272E4CB3}
+		{2ACFEBAF-2190-400B-AB10-DE117A02538D} = {514D989B-13A6-4A0F-AB87-DADF19741A8C}
+		{9A1B56CB-3CAD-4ED5-B0CE-964AE9C2BB08} = {1496B1DD-FE4C-4324-94FA-E47E272E4CB3}
+	EndGlobalSection
+EndGlobal

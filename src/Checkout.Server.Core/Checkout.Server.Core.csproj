@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BD78D959-4102-4237-97B3-27B8CD9A3F00}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Checkout.Server.Core</RootNamespace>
+    <AssemblyName>Checkout.Server.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Build.Framework" />
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Enums\ShoppingCartCommandType.cs" />
+    <Compile Include="Models\Api\Response\BasicApiResponseModel.cs" />
+    <Compile Include="Models\Api\Request\ShoppingCartItemInputModel.cs" />
+    <Compile Include="Models\Api\Request\IShoppingCartItemInputModel.cs" />
+    <Compile Include="Models\Commands\UpdateItemCommandModel.cs" />
+    <Compile Include="Models\Commands\AddItemCommandModel.cs" />
+    <Compile Include="Models\Commands\CommandErrorModel.cs" />
+    <Compile Include="Models\Commands\ErrorCommandResponseModel.cs" />
+    <Compile Include="Models\Commands\ICommandResponseModel.cs" />
+    <Compile Include="Models\Commands\SuccessCommandResponseModel.cs" />
+    <Compile Include="Models\IErrorModel.cs" />
+    <Compile Include="Models\Commands\IShoppingCartCommandModel.cs" />
+    <Compile Include="Models\Commands\RemoveItemCommandModel.cs" />
+    <Compile Include="Models\Api\Response\ErrorApiResponseModel.cs" />
+    <Compile Include="Models\IResponseModel.cs" />
+    <Compile Include="Models\Shopping\IStoreableModel.cs" />
+    <Compile Include="Models\Shopping\ShoppingCartItemModel.cs" />
+    <Compile Include="Models\Shopping\IShoppingItemModel.cs" />
+    <Compile Include="Models\Api\Response\SuccessReponseModel.cs" />
+    <Compile Include="Models\Api\Response\ValidationErrorModel.cs" />
+    <Compile Include="Models\Api\Response\IApiResponseModel.cs" />
+    <Compile Include="Models\Api\Response\ApiErrorModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
