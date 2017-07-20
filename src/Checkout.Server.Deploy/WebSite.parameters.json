@@ -1,0 +1,21 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+  "parameters": {
+    "hostingPlanName": {
+      "value": "checkout-farm"
+    },
+    "checkoutApiDeployPackageFileName": {
+      "value": "package.zip"
+    },
+    "checkoutApiDeployPackageFolder": {
+      "value": "Checkout.Server.Host"
+    },
+    "websiteName": {
+      "value": "checkout-shopping-server"
+    },
+    "skuName": {
+      "value": "S1"
+    }
+  }
+}

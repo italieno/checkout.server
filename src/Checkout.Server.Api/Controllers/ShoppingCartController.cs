@@ -46,6 +46,7 @@ namespace Checkout.Server.Api.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "DrinkManager")]
         [ResponseType(typeof(IResponseModel))]
         [Route("add", Name = "add")]
         public IHttpActionResult AddItem(ShoppingCartItemInputModel input)
@@ -59,6 +60,7 @@ namespace Checkout.Server.Api.Controllers
         }
 
         [HttpPut]
+        [Authorize(Roles = "DrinkManager")]
         [ResponseType(typeof(IResponseModel))]
         [Route("update", Name = "update")]
         public IHttpActionResult Update(ShoppingCartItemInputModel input)
@@ -72,6 +74,7 @@ namespace Checkout.Server.Api.Controllers
         }
 
         [HttpDelete]
+        [Authorize(Roles = "DrinkManager")]
         [ResponseType(typeof(IResponseModel))]
         [Route("remove", Name = "remove")]
         public IHttpActionResult Delete(ShoppingCartItemInputModel input)
