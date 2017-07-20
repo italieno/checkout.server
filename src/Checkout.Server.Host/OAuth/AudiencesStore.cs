@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Concurrent;
-using System.Security.Cryptography;
-using Microsoft.Owin.Security.DataHandler.Encoder;
+﻿using System.Collections.Concurrent;
 
 namespace Checkout.Server.Host.OAuth
 {
@@ -11,6 +8,7 @@ namespace Checkout.Server.Host.OAuth
 
         static AudiencesStore()
         {
+            //todo: use Formo here to grab these setting from  web config
             AudiencesList.TryAdd("099153c2625149bc8ecb3e85e03f0022",
                 new Audience
                 {

@@ -50,7 +50,8 @@ namespace Checkout.Server.Host
         {
             //todo: use Formo here to grab these setting from  web config
             var issuer = "dummy-oauth-server";
-            var audience = "099153c2625149bc8ecb3e85e03f0022";
+            var audienceUsers = "099153c2625149bc8ecb3e85e03f0022";
+            var audienceClients = "9f6858626c094554b31ebefa4b8cac2c";
             var secret = TextEncodings.Base64Url.Decode("IxrAjDoa2FqElO7IhrSrUJELhUckePEPVpaePlS_Xaw");
             
             app.UseOAuthAuthorizationServer(new OAuthAuthorizationServerOptions()
@@ -67,7 +68,7 @@ namespace Checkout.Server.Host
                 new JwtBearerAuthenticationOptions
                 {
                     AuthenticationMode = AuthenticationMode.Active,
-                    AllowedAudiences = new[] { audience },
+                    AllowedAudiences = new[] { audienceUsers, audienceClients },
 
                     IssuerSecurityTokenProviders = new IIssuerSecurityTokenProvider[]
                     {
