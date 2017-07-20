@@ -5,6 +5,7 @@ using System.Web.Http;
 using Checkout.Server.Api.Responses;
 using Checkout.Server.Core.Models;
 using Checkout.Server.Core.Models.Api;
+using Checkout.Server.Core.Models.Api.Response;
 
 namespace Checkout.Server.Api.Requests
 {

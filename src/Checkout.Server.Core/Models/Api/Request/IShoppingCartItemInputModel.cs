@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Checkout.Server.Core.Models.Api.Inputs
+﻿namespace Checkout.Server.Core.Models.Api.Request
 {
     public interface IShoppingCartItemInputModel
     {

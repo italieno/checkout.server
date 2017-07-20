@@ -6,7 +6,7 @@ using System.Web.Http.Description;
 using System.Web.Security;
 using Checkout.Server.Api.Requests;
 using Checkout.Server.Core.Models;
-using Checkout.Server.Core.Models.Api.Inputs;
+using Checkout.Server.Core.Models.Api.Request;
 using Checkout.Server.Core.Models.Shopping;
 using Checkout.Server.Infra.Services.Controllers;
 
@@ -49,7 +49,7 @@ namespace Checkout.Server.Api.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = "drink-manager")]
+        [Authorize(Roles = "drink-manager, trusted-app")]
         [ResponseType(typeof(IResponseModel))]
         [Route("add", Name = "add")]
         public IHttpActionResult AddItem(ShoppingCartItemInputModel input)
@@ -63,7 +63,7 @@ namespace Checkout.Server.Api.Controllers
         }
 
         [HttpPut]
-        [Authorize(Roles = "drink-manager")]
+        [Authorize(Roles = "drink-manager, trusted-app")]
         [ResponseType(typeof(IResponseModel))]
         [Route("update", Name = "update")]
         public IHttpActionResult Update(ShoppingCartItemInputModel input)
@@ -77,7 +77,7 @@ namespace Checkout.Server.Api.Controllers
         }
 
         [HttpDelete]
-        [Authorize(Roles = "drink-manager")]
+        [Authorize(Roles = "drink-manager, trusted-app")]
         [ResponseType(typeof(IResponseModel))]
         [Route("remove", Name = "remove")]
         public IHttpActionResult Delete(ShoppingCartItemInputModel input)

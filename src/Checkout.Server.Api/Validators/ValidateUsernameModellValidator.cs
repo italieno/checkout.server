@@ -1,4 +1,4 @@
-﻿using Checkout.Server.Core.Models.Api.Inputs;
+﻿using Checkout.Server.Core.Models.Api.Request;
 using FluentValidation;
 
 namespace Checkout.Server.Api.Validators

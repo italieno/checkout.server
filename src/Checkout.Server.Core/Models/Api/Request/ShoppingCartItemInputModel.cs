@@ -1,4 +1,4 @@
-﻿namespace Checkout.Server.Core.Models.Api.Inputs
+﻿namespace Checkout.Server.Core.Models.Api.Request
 {
     public class ShoppingCartItemInputModel : IShoppingCartItemInputModel
     {

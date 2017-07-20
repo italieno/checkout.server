@@ -1,5 +1,6 @@
 using Checkout.Server.Core.Models.Api;
-using Checkout.Server.Core.Models.Api.Inputs;
+using Checkout.Server.Core.Models.Api.Request;
+using Checkout.Server.Core.Models.Api.Response;
 
 namespace Checkout.Server.Infra.Services.Controllers
 {

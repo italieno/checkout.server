@@ -2,6 +2,7 @@
 using System.Net.Http.Formatting;
 using Checkout.Server.Core.Models;
 using Checkout.Server.Core.Models.Api;
+using Checkout.Server.Core.Models.Api.Response;
 using Newtonsoft.Json.Serialization;
 
 namespace Checkout.Server.Api.Responses

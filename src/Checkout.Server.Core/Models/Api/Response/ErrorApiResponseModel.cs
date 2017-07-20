@@ -1,4 +1,4 @@
-﻿namespace Checkout.Server.Core.Models.Api
+﻿namespace Checkout.Server.Core.Models.Api.Response
 {
     public class ErrorApiResponseModel : BasicApiResponseModel
     {

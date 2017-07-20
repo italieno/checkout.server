@@ -5,6 +5,7 @@ using System.Web.Http.Controllers;
 using System.Web.Http.Filters;
 using Checkout.Server.Api.Responses;
 using Checkout.Server.Core.Models.Api;
+using Checkout.Server.Core.Models.Api.Response;
 
 namespace Checkout.Server.Api.Filters
 {

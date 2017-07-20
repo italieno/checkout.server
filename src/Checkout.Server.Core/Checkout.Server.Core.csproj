@@ -46,9 +46,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enums\ShoppingCartCommandType.cs" />
-    <Compile Include="Models\Api\BasicApiResponseModel.cs" />
-    <Compile Include="Models\Api\Inputs\ShoppingCartItemInputModel.cs" />
-    <Compile Include="Models\Api\Inputs\IShoppingCartItemInputModel.cs" />
+    <Compile Include="Models\Api\Response\BasicApiResponseModel.cs" />
+    <Compile Include="Models\Api\Request\ShoppingCartItemInputModel.cs" />
+    <Compile Include="Models\Api\Request\IShoppingCartItemInputModel.cs" />
     <Compile Include="Models\Commands\UpdateItemCommandModel.cs" />
     <Compile Include="Models\Commands\AddItemCommandModel.cs" />
     <Compile Include="Models\Commands\CommandErrorModel.cs" />
@@ -58,15 +58,15 @@
     <Compile Include="Models\IErrorModel.cs" />
     <Compile Include="Models\Commands\IShoppingCartCommandModel.cs" />
     <Compile Include="Models\Commands\RemoveItemCommandModel.cs" />
-    <Compile Include="Models\Api\ErrorApiResponseModel.cs" />
+    <Compile Include="Models\Api\Response\ErrorApiResponseModel.cs" />
     <Compile Include="Models\IResponseModel.cs" />
     <Compile Include="Models\Shopping\IStoreableModel.cs" />
     <Compile Include="Models\Shopping\ShoppingCartItemModel.cs" />
     <Compile Include="Models\Shopping\IShoppingItemModel.cs" />
-    <Compile Include="Models\Api\SuccessReponseModel.cs" />
-    <Compile Include="Models\Api\ValidationErrorModel.cs" />
-    <Compile Include="Models\Api\IApiResponseModel.cs" />
-    <Compile Include="Models\Api\ApiErrorModel.cs" />
+    <Compile Include="Models\Api\Response\SuccessReponseModel.cs" />
+    <Compile Include="Models\Api\Response\ValidationErrorModel.cs" />
+    <Compile Include="Models\Api\Response\IApiResponseModel.cs" />
+    <Compile Include="Models\Api\Response\ApiErrorModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Checkout.Server.Core.Models.Api.Inputs;
+using Checkout.Server.Core.Models.Api.Request;
 using Checkout.Server.Core.Models.Commands;
 using Checkout.Server.Core.Models.Shopping;
 using Checkout.Server.Infra.Services.Commands;
