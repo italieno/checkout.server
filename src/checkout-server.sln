@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Checkout.Server.Dal", "Chec
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{38336FC2-495E-40F1-9B0A-348786005431}"
 	ProjectSection(SolutionItems) = preProject
+		..\..\..\Users\stefano.gajon\Desktop\Postman\Checkout - Azure.postman_environment.json = ..\..\..\Users\stefano.gajon\Desktop\Postman\Checkout - Azure.postman_environment.json
+		..\..\..\Users\stefano.gajon\Desktop\Postman\Checkout - Local.postman_environment.json = ..\..\..\Users\stefano.gajon\Desktop\Postman\Checkout - Local.postman_environment.json
 		..\..\..\Users\stefano.gajon\Desktop\Postman\Checkout Server - Shopping Cart Api.postman_collection.json = ..\..\..\Users\stefano.gajon\Desktop\Postman\Checkout Server - Shopping Cart Api.postman_collection.json
 	EndProjectSection
 EndProject

@@ -22,7 +22,7 @@ namespace Checkout.Server.Host
         {
             var config = new HttpConfiguration();
 
-            ConfigureOAuth(app);
+            ConfigureDummyOAuth(app);
             ConfigurationHttp(config);
 
             var container = new WindsorContainerConfigurator().Configure(config);
@@ -46,7 +46,7 @@ namespace Checkout.Server.Host
             config.Filters.Add(new ValidateModelStateFilter());
         }
 
-        public void ConfigureOAuth(IAppBuilder app)
+        public void ConfigureDummyOAuth(IAppBuilder app)
         {
             //todo: use Formo here to grab these setting from  web config
             var issuer = "dummy-oauth-server";
