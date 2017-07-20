@@ -10,5 +10,6 @@ namespace Checkout.Server.Infra.Services.Controllers
         IApiResponseModel RemoveItem(ShoppingCartItemInputModel input);
         IApiResponseModel AddItem(ShoppingCartItemInputModel input);
         IApiResponseModel UpdateItem(ShoppingCartItemInputModel input);
+        IApiResponseModel RemoveAll();
     }
 }

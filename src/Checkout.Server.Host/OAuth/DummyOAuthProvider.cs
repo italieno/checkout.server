@@ -38,8 +38,6 @@ namespace Checkout.Server.Host.OAuth
 
         public override Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
         {
-            context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { "*" });
-
             //Dummy check here (obsvioudly we shuld grab user info from a membership system)
             if (context.UserName != context.Password)
             {
@@ -50,18 +48,41 @@ namespace Checkout.Server.Host.OAuth
             var identity = new ClaimsIdentity("JWT");
 
             identity.AddClaim(new Claim(ClaimTypes.Name, context.UserName));
-            identity.AddClaim(new Claim(ClaimTypes.Role, "DrinkManager"));
+            identity.AddClaim(new Claim(ClaimTypes.Role, "drink-manager"));
             
             var props = new AuthenticationProperties(new Dictionary<string, string>
             {
-                {
-                    "audience", (context.ClientId == null) ? string.Empty : context.ClientId
-                }
+                { "audience", context.ClientId ?? string.Empty }
             });
 
             var ticket = new AuthenticationTicket(identity, props);
             context.Validated(ticket);
             return Task.FromResult<object>(null);
         }
+
+        public override Task GrantClientCredentials(OAuthGrantClientCredentialsContext context)
+        {
+            var audience = AudiencesStore.FindAudience(context.ClientId);
+            var identity = new ClaimsIdentity(context.Options.AuthenticationType);
+
+            identity.AddClaim(new Claim(ClaimTypes.Name, audience.Name));
+            
+            var role = audience.IsConfidential
+                ? "trusted-app"
+                : "simple-app";
+
+            identity.AddClaim(new Claim(ClaimTypes.Role, role));
+
+            var props = new AuthenticationProperties(new Dictionary<string, string>
+            {
+                { "audience", context.ClientId ?? string.Empty },
+                { "client-id", context.ClientId }
+            });
+
+            var ticket = new AuthenticationTicket(identity, props);
+            context.Validated(ticket);
+            return Task.FromResult<object>(null);
+        }
+
     }
 }

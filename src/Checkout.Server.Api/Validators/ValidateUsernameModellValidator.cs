@@ -3,9 +3,9 @@ using FluentValidation;
 
 namespace Checkout.Server.Api.Validators
 {
-    public class ValidateUsernameModellValidator : AbstractValidator<ShoppingCartItemInputModel>
+    public class ShoppingCartItemInputModellValidator : AbstractValidator<ShoppingCartItemInputModel>
     {
-        public ValidateUsernameModellValidator()
+        public ShoppingCartItemInputModellValidator()
         {
             RuleFor(input => input.What)
                 .NotEmpty()

@@ -46,7 +46,7 @@ namespace Checkout.Server.Api.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = "DrinkManager")]
+        [Authorize(Roles = "drink-manager")]
         [ResponseType(typeof(IResponseModel))]
         [Route("add", Name = "add")]
         public IHttpActionResult AddItem(ShoppingCartItemInputModel input)
@@ -60,7 +60,7 @@ namespace Checkout.Server.Api.Controllers
         }
 
         [HttpPut]
-        [Authorize(Roles = "DrinkManager")]
+        [Authorize(Roles = "drink-manager")]
         [ResponseType(typeof(IResponseModel))]
         [Route("update", Name = "update")]
         public IHttpActionResult Update(ShoppingCartItemInputModel input)
@@ -74,12 +74,27 @@ namespace Checkout.Server.Api.Controllers
         }
 
         [HttpDelete]
-        [Authorize(Roles = "DrinkManager")]
+        [Authorize(Roles = "drink-manager")]
         [ResponseType(typeof(IResponseModel))]
         [Route("remove", Name = "remove")]
         public IHttpActionResult Delete(ShoppingCartItemInputModel input)
         {
             var response = _controllerService.RemoveItem(input);
+
+            if (response.IsSuccess)
+                return Ok(response.Content);
+
+            return new BadRequestWithError(response.ApiError);
+        }
+
+        //This endpoint has been developed to demo the "oauth client_credential" feature
+        [HttpDelete]
+        [Authorize(Roles = "trusted-app")]
+        [ResponseType(typeof(IResponseModel))]
+        [Route("reset", Name = "reset")]
+        public IHttpActionResult Reset()
+        {
+            var response = _controllerService.RemoveAll();
 
             if (response.IsSuccess)
                 return Ok(response.Content);

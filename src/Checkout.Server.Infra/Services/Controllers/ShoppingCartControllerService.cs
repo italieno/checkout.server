@@ -113,5 +113,26 @@ namespace Checkout.Server.Infra.Services.Controllers
                 return new ErrorApiResponseModel(new ApiErrorModel(HttpStatusCode.BadRequest, e.Message));
             }
         }
+
+        public IApiResponseModel RemoveAll()
+        {
+            try
+            {
+                //todo: better to use command factory here
+                var result = _commandService.RemoveAll();
+
+                if (result.IsSuccess)
+                {
+                    return new SuccessReponseModel(result.Content);
+                }
+
+                return new ErrorApiResponseModel(new ApiErrorModel(HttpStatusCode.BadRequest, result.Error.Message));
+
+            }
+            catch (Exception e)
+            {
+                return new ErrorApiResponseModel(new ApiErrorModel(HttpStatusCode.BadRequest, e.Message));
+            }
+        }
     }
 }

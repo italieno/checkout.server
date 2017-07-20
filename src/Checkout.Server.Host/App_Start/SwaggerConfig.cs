@@ -15,7 +15,7 @@ namespace Checkout.Server.Host
                     c.IgnoreObsoleteActions();
                     c.DescribeAllEnumsAsStrings();
                 })
-                .EnableSwaggerUi(c =>
+                .EnableSwaggerUi("reference/{*assetPath}", c =>
                 {
                     c.DocExpansion(DocExpansion.Full);
                 });

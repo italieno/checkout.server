@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Checkout.Server.Core.Models.Commands;
 using Checkout.Server.Core.Models.Shopping;
 using Checkout.Server.Dal.Repositories;
@@ -269,6 +270,27 @@ namespace Checkout.Server.Unit.Tests.Services.Commands
 
             //Assert
             _itemsRepository.Received().Save(Arg.Is<ShoppingCartItemModel>(x => (string)x.Id == "Pepsi" && x.Quantity == 2));
+            Assert.IsTrue(response.IsSuccess);
+            Assert.IsNull(response.Error);
+        }
+
+        [Test]
+        public void RemoveAll_WhenItemsAreOresent_ShoulDeleteThemAll()
+        {
+            //Arrange
+           _itemsRepository.All().Returns(new List<IShoppingItemModel>()
+           {
+                new ShoppingCartItemModel(id: "Coca-Cola", quantity: 2),
+                new ShoppingCartItemModel(id: "Fanta", quantity: 3),
+                new ShoppingCartItemModel(id: "Sprite"),
+                new ShoppingCartItemModel(id: "7up", quantity: 5),
+           });
+
+            //Act
+            var response = _sut.RemoveAll();
+
+            //Assert
+            _itemsRepository.Received(4).Delete(Arg.Any<IComparable>());
             Assert.IsTrue(response.IsSuccess);
             Assert.IsNull(response.Error);
         }

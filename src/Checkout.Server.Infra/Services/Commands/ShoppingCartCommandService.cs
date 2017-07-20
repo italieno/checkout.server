@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Checkout.Server.Core.Models.Commands;
 using Checkout.Server.Core.Models.Shopping;
 using Checkout.Server.Dal.Repositories;
@@ -112,6 +113,23 @@ namespace Checkout.Server.Infra.Services.Commands
                     _itemsRepository.Save(item);
                 }
                 
+                return new SuccessCommandResponseModel(true);
+            }
+            catch (Exception e)
+            {
+                return new ErrorCommandResponseModel(e);
+            }
+        }
+
+        public ICommandResponseModel RemoveAll()
+        {
+            try
+            {
+                foreach (var item in  _itemsRepository.All())
+                {
+                    _itemsRepository.Delete(item.Id);
+                }
+
                 return new SuccessCommandResponseModel(true);
             }
             catch (Exception e)

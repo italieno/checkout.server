@@ -18,6 +18,15 @@ namespace Checkout.Server.Host.OAuth
                     Base64Secret = "IxrAjDoa2FqElO7IhrSrUJELhUckePEPVpaePlS_Xaw",
                     Name = "SimpleClient"
                 });
+
+            AudiencesList.TryAdd("9f6858626c094554b31ebefa4b8cac2c",
+                new Audience
+                {
+                    ClientId = "9f6858626c094554b31ebefa4b8cac2c",
+                    Base64Secret = "IxrAjDoa2FqElO7IhrSrUJELhUckePEPVpaePlS_Xaw",
+                    Name = "TrustedClient",
+                    IsConfidential = true
+                });
         }
         
         public static Audience FindAudience(string clientId)

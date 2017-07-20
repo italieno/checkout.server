@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web.Http;
+﻿using System.Web.Http;
+using Swashbuckle.Application;
 
 namespace Checkout.Server.Host
 {
@@ -10,6 +8,14 @@ namespace Checkout.Server.Host
         public static void Register(HttpConfiguration config)
         {
             config.MapHttpAttributeRoutes();
+
+            // Redirect root to Swagger UI
+            config.Routes.MapHttpRoute(
+                name: "Swagger UI",
+                routeTemplate: "",
+                defaults: null,
+                constraints: null,
+                handler: new RedirectHandler(message => message.RequestUri.ToString().TrimEnd('/'), "reference/index"));
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",

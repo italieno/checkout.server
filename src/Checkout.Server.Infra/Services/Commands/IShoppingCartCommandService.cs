@@ -7,5 +7,6 @@ namespace Checkout.Server.Infra.Services.Commands
         ICommandResponseModel RemoveItem(RemoveItemCommandModel commandModel);
         ICommandResponseModel AddItem(AddItemCommandModel commandModel);
         ICommandResponseModel UpdateItem(UpdateItemCommandModel commandModel);
+        ICommandResponseModel RemoveAll();
     }
 }
