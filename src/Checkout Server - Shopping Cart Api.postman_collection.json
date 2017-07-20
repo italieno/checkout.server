@@ -1,0 +1,420 @@
+{
+	"id": "b61abcbf-a29e-9a43-0926-aaf165aa6463",
+	"name": "Checkout Server - Shopping Cart Api",
+	"description": "",
+	"order": [
+		"441a552a-7623-1b71-8151-bc512323675b",
+		"ba91a2e6-1de2-93cb-b73d-f953d4351fa6",
+		"f74f640e-252a-2a1a-092f-3672d2ab8a9b",
+		"72a44bc9-0dd2-47bd-296e-405e491f5d22",
+		"16e397cf-a249-8116-ea85-ea7953db9624",
+		"453c1226-d225-c3d2-0de2-a1d4c9868d6f",
+		"3ed7bf04-83bb-3ead-45d9-d2722d582512",
+		"9c582112-d40b-6ba1-56a1-76f1308bf27a",
+		"866058dd-f7df-de14-0ae6-1d22e1444642"
+	],
+	"folders": [],
+	"timestamp": 1500504279359,
+	"owner": 0,
+	"public": false,
+	"requests": [
+		{
+			"id": "16e397cf-a249-8116-ea85-ea7953db9624",
+			"headers": "Content-Type: application/json\nAuthorization: bearer {{token}}\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "bearer {{token}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{basepath}}/shoppingcart/add",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "\n\n",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1500552869803,
+			"name": "ShoppingCart - Add Item (authenticated)",
+			"description": "",
+			"collectionId": "b61abcbf-a29e-9a43-0926-aaf165aa6463",
+			"responses": [],
+			"rawModeData": "{\n\t\"what\":\"coffee\",\n\t\"howMany\" : 2\n}"
+		},
+		{
+			"id": "3ed7bf04-83bb-3ead-45d9-d2722d582512",
+			"headers": "Content-Type: application/json\nAuthorization: bearer {{token}}\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "bearer {{token}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{basepath}}/shoppingcart/update",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "PUT",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "\n\n",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1500552968136,
+			"name": "ShoppingCart - Update Item (authenticated)",
+			"description": "",
+			"collectionId": "b61abcbf-a29e-9a43-0926-aaf165aa6463",
+			"responses": [],
+			"rawModeData": "{\n\t\"what\":\"coffee\",\n\t\"howMany\" : 13\n}"
+		},
+		{
+			"id": "441a552a-7623-1b71-8151-bc512323675b",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{basepath}}/oauth/token",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "grant_type",
+					"value": "password",
+					"type": "text",
+					"enabled": true,
+					"warning": ""
+				},
+				{
+					"key": "username",
+					"value": "{{username}}",
+					"type": "text",
+					"enabled": true,
+					"warning": ""
+				},
+				{
+					"key": "password",
+					"value": "{{password}}",
+					"type": "text",
+					"enabled": true,
+					"warning": ""
+				},
+				{
+					"key": "client_id",
+					"value": "099153c2625149bc8ecb3e85e03f0022",
+					"type": "text",
+					"enabled": true,
+					"warning": ""
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": "var jsonData = JSON.parse(responseBody);\ntests[\"Valid Acess Token\"] = jsonData.access_token != \"undefined\";\n\nvar access_token = jsonData.access_token;\nvar refresh_token = jsonData.refresh_token;\n\npostman.setGlobalVariable(\"token\", access_token);\n\n\n\n",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1500548374063,
+			"name": "Get Token",
+			"description": "",
+			"collectionId": "b61abcbf-a29e-9a43-0926-aaf165aa6463",
+			"responses": []
+		},
+		{
+			"id": "453c1226-d225-c3d2-0de2-a1d4c9868d6f",
+			"headers": "Content-Type: application/json\nAuthorization: bearer {{token}}\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "bearer {{token}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{basepath}}/shoppingcart/remove",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "DELETE",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "\n\n",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1500552839003,
+			"name": "ShoppingCart - Delete Item (authenticated)",
+			"description": "",
+			"collectionId": "b61abcbf-a29e-9a43-0926-aaf165aa6463",
+			"responses": [],
+			"rawModeData": "{\n\t\"what\":\"coffee\",\n\t\"howMany\" : 1\n}"
+		},
+		{
+			"id": "72a44bc9-0dd2-47bd-296e-405e491f5d22",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{basepath}}/shoppingcart/coffee",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [
+				{
+					"key": "grant_type",
+					"value": "password",
+					"type": "text",
+					"enabled": true,
+					"warning": ""
+				},
+				{
+					"key": "username",
+					"value": "JustinCase",
+					"type": "text",
+					"enabled": true,
+					"warning": ""
+				},
+				{
+					"key": "password",
+					"value": "JustinCase",
+					"type": "text",
+					"enabled": true,
+					"warning": ""
+				},
+				{
+					"key": "client_id",
+					"value": "099153c2625149bc8ecb3e85e03f0022",
+					"type": "text",
+					"enabled": true,
+					"warning": ""
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": "\n\n\n",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1500552884195,
+			"name": "ShoppingCart - Item",
+			"description": "",
+			"collectionId": "b61abcbf-a29e-9a43-0926-aaf165aa6463",
+			"responses": []
+		},
+		{
+			"id": "866058dd-f7df-de14-0ae6-1d22e1444642",
+			"headers": "Content-Type: application/json\nAuthorization: bearer {{token}}\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "bearer {{token}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{basepath}}/shoppingcart/reset",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "DELETE",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "\n\n",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1500553018841,
+			"name": "ShoppingCart - Reset",
+			"description": "",
+			"collectionId": "b61abcbf-a29e-9a43-0926-aaf165aa6463",
+			"responses": [],
+			"rawModeData": ""
+		},
+		{
+			"id": "9c582112-d40b-6ba1-56a1-76f1308bf27a",
+			"headers": "Content-Type: application/json\nAuthorization: bearer {{token}}\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "bearer {{token}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{basepath}}/shoppingcart/update",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "PUT",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "\n\n",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1500552954674,
+			"name": "ShoppingCart - Wrong Update Item (authenticated)",
+			"description": "",
+			"collectionId": "b61abcbf-a29e-9a43-0926-aaf165aa6463",
+			"responses": [],
+			"rawModeData": "{\n\t\"what\":\"wrongquantityitem\",\n\t\"howMany\" : -2\n}"
+		},
+		{
+			"id": "ba91a2e6-1de2-93cb-b73d-f953d4351fa6",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{basepath}}/oauth/token",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "grant_type",
+					"value": "client_credentials",
+					"type": "text",
+					"enabled": true,
+					"warning": ""
+				},
+				{
+					"key": "client_id",
+					"value": "9f6858626c094554b31ebefa4b8cac2c",
+					"type": "text",
+					"enabled": true,
+					"warning": ""
+				},
+				{
+					"key": "client_secret",
+					"value": "IxrAjDoa2FqElO7IhrSrUJELhUckePEPVpaePlS_Xaw",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": "var jsonData = JSON.parse(responseBody);\ntests[\"Valid Acess Token\"] = jsonData.access_token != \"undefined\";\n\nvar access_token = jsonData.access_token;\nvar refresh_token = jsonData.refresh_token;\n\npostman.setGlobalVariable(\"token\", access_token);\n\n\n\n",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1500548494449,
+			"name": "Get Token (Client Credentials)",
+			"description": "",
+			"collectionId": "b61abcbf-a29e-9a43-0926-aaf165aa6463",
+			"responses": []
+		},
+		{
+			"id": "f74f640e-252a-2a1a-092f-3672d2ab8a9b",
+			"headers": "",
+			"headerData": [],
+			"url": "{{basepath}}/shoppingcart",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [
+				{
+					"key": "grant_type",
+					"value": "password",
+					"type": "text",
+					"enabled": true,
+					"warning": ""
+				},
+				{
+					"key": "username",
+					"value": "JustinCase",
+					"type": "text",
+					"enabled": true,
+					"warning": ""
+				},
+				{
+					"key": "password",
+					"value": "JustinCase",
+					"type": "text",
+					"enabled": true,
+					"warning": ""
+				},
+				{
+					"key": "client_id",
+					"value": "099153c2625149bc8ecb3e85e03f0022",
+					"type": "text",
+					"enabled": true,
+					"warning": ""
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": "\n\n",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1500548509995,
+			"name": "ShoppingCart - List",
+			"description": "",
+			"collectionId": "b61abcbf-a29e-9a43-0926-aaf165aa6463",
+			"responses": []
+		}
+	]
+}
