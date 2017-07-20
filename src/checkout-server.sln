@@ -26,6 +26,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{38336FC2-4
 		..\..\..\Users\stefano.gajon\Desktop\Postman\Checkout Server - Shopping Cart Api.postman_collection.json = ..\..\..\Users\stefano.gajon\Desktop\Postman\Checkout Server - Shopping Cart Api.postman_collection.json
 	EndProjectSection
 EndProject
+Project("{151D2E53-A2C4-4D7D-83FE-D05416EBD58E}") = "Checkout.Server.Deploy", "Checkout.Server.Deploy\Checkout.Server.Deploy.deployproj", "{6F488D56-F926-4BE8-A52F-46BF3F11898F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -60,6 +62,10 @@ Global
 		{9A1B56CB-3CAD-4ED5-B0CE-964AE9C2BB08}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9A1B56CB-3CAD-4ED5-B0CE-964AE9C2BB08}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9A1B56CB-3CAD-4ED5-B0CE-964AE9C2BB08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F488D56-F926-4BE8-A52F-46BF3F11898F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F488D56-F926-4BE8-A52F-46BF3F11898F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F488D56-F926-4BE8-A52F-46BF3F11898F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F488D56-F926-4BE8-A52F-46BF3F11898F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
